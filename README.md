@@ -64,6 +64,9 @@ Set these in your Railway project settings:
 | `RESEND_API_KEY` | Resend API key for emails |
 | `EMAIL_FROM` | Sender email address |
 | `NEXT_PUBLIC_APP_URL` | Your app URL (for client-side) |
+| `OPENCLAW_API_KEY` | OpenClaw API key (optional, enables AI chat) |
+| `OPENCLAW_API_URL` | OpenClaw API endpoint (optional, default: `https://api.openclaw.com/v1/chat/completions`) |
+| `OPENCLAW_MODEL` | OpenClaw model name (optional) |
 
 ### 3. Set Up Stripe
 
@@ -150,6 +153,23 @@ prisma/
 | POST | `/api/stripe/checkout` | Create checkout session |
 | POST | `/api/stripe/portal` | Open billing portal |
 | POST | `/api/stripe/webhook` | Stripe webhook handler |
+
+## OpenClaw AI Assistant (Optional)
+
+This template includes an optional AI chat assistant powered by [OpenClaw](https://openclaw.com).
+
+**Setup:**
+1. Get an API key from OpenClaw
+2. Set `OPENCLAW_API_KEY` in your environment variables
+3. The chat widget appears automatically in the bottom-right corner
+
+**How it works:**
+- `/api/ai/chat` — Proxies chat requests to OpenClaw's API (OpenAI-compatible)
+- `ChatWidget` component — Floating chat bubble with conversation UI
+- Rate limited to 20 requests/minute per user
+- Only available to authenticated users
+
+If `OPENCLAW_API_KEY` is not set, the widget will show a "not configured" message.
 
 ## Customization
 

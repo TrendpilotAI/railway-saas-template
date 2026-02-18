@@ -3,7 +3,7 @@ const nextConfig = {
   output: "standalone",
   eslint: { ignoreDuringBuilds: false },
   experimental: {
-    workerThreads: true,
+    workerThreads: false,
     cpus: 1,
   },
 };
